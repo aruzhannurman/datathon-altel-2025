@@ -133,4 +133,4 @@ For production deployment, consider:
 - **Port conflicts**: Change ports in docker-compose.yml if needed
 - **Memory issues**: Increase Docker memory limits for ML models
 - **Network issues**: Ensure containers can communicate via the bridge network# datathon-activ-2025
-# datathon-activ-2025
+# datathon-altel-2025
