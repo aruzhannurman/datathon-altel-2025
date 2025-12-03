@@ -124,7 +124,7 @@ For production deployment, consider:
 ## Notes
 
 - Instagram scraping may require login for private posts.
-- The AI model uses GPT-2 for response generation.
+- The AI model uses GPT-4o-mini for response generation.
 - Ensure both servers are running for the app to work.
 - Check the FastAPI logs for detailed processing information.
 
