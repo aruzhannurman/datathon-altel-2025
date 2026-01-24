@@ -2,11 +2,72 @@
 
 A Streamlit application with FastAPI backend for processing Instagram post comments and generating AI-powered responses.
 
+## 📸 Screenshots
+
+### Main Interface
+![Landing Page](imgs/landing.png)
+
+The main interface allows you to process Instagram post comments by entering a post URL.
+
+### Processing Results
+![Processing Results](imgs/plot1.png)
+
+After processing, you'll see comprehensive analytics including:
+- Total comments processed vs. generated answers
+- Comment quality distribution (Clean, Toxic, Spam)
+- Answer generation success rate
+
+### Detailed Analysis
+![Comment Classifications](imgs/plot2.png)
+
+The system provides detailed breakdowns of:
+- Comment categories (complaint, question, gratitude, review)
+- Comment tones (negative, neutral, positive)
+- Summary statistics table
+
+### Excel Report Output
+![Excel Report](imgs/excel.png)
+
+All results are exported to a comprehensive Excel report containing:
+- Original comments and generated responses
+- Toxicity and spam detection results
+- Comment classifications and confidence scores
+- Processing metadata and timestamps
+
+### Example Report
+
+You can find a sample output report in the [`examples/answers.xlsx`](examples/answers.xlsx) file, which demonstrates the complete analysis of 90 Instagram comments with generated AI responses.
+
+## ⚙️ Environment Setup
+
+Before running the application, you need to configure environment variables:
+
+1. **Copy the environment template**:
+   ```bash
+   cp env.example .env
+   ```
+
+2. **Edit the `.env` file** with your credentials:
+   ```bash
+   CLIENT_ID=""           # Instagram API client ID (optional for basic scraping)
+   CLIENT_SECRET=""       # Instagram API client secret (optional for basic scraping)
+   OPENAI_API_KEY=""      # Required: Your OpenAI API key for AI response generation
+   PROJECT_ID=""          # Optional: Project identifier for tracking
+   ```
+
+### Environment Variables Explained
+
+- **`OPENAI_API_KEY`** *(Required)*: Your OpenAI API key for generating AI responses. Get it from [OpenAI Platform](https://platform.openai.com/api-keys).
+- **`CLIENT_ID`** *(Optional)*: Instagram API client ID. Only needed for advanced Instagram API features.
+- **`CLIENT_SECRET`** *(Optional)*: Instagram API client secret. Only needed for advanced Instagram API features.
+- **`PROJECT_ID`** *(Optional)*: Custom project identifier for organizing your data and tracking usage.
+
+**Note**: The `OPENAI_API_KEY` is the only required variable for the application to work. The Instagram-related variables are optional and only needed for advanced API features.
+
 ## Features
 
 - **Process All Comments**: Input an Instagram post URL, scrape all comments, generate AI responses, and download results as XLSX.
 - **Process Single Comment**: Input a post URL and a specific comment, generate an AI response.
-- Progress bars and animations for a visually appealing experience.
 
 ## 🐳 Docker Setup (Recommended)
 
@@ -15,7 +76,7 @@ A Streamlit application with FastAPI backend for processing Instagram post comme
 1. **Clone the repository**:
    ```bash
    git clone <repository-url>
-   cd datathon-tele2-2025
+   cd datathon-altel-2025
    ```
 
 2. **Run with Docker Compose**:
@@ -133,4 +194,3 @@ For production deployment, consider:
 - **Port conflicts**: Change ports in docker-compose.yml if needed
 - **Memory issues**: Increase Docker memory limits for ML models
 - **Network issues**: Ensure containers can communicate via the bridge network# datathon-activ-2025
-# datathon-altel-2025

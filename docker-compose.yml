@@ -11,6 +11,8 @@ services:
     volumes:
       - ./data:/app/data
       - ./models:/app/models
+    env_file:
+      - .env
     environment:
       - PYTHONPATH=/app
     networks:

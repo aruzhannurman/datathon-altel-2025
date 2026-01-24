@@ -6,6 +6,7 @@ import asyncio
 from typing import List, Dict, Any, Optional, Union
 from dataclasses import dataclass
 import time
+import os
 from openai import AsyncOpenAI, OpenAI
 import logging
 
@@ -49,7 +50,12 @@ class BaseOpenaiProcessor:
 
     def __init__(self, api_key: Optional[str] = None):
         """Initialize with OpenAI client."""
-        self.client = OpenAI(api_key=api_key) if api_key else OpenAI()
+        if api_key is None:
+            api_key = os.getenv("OPENAI_API_KEY")
+        if api_key:
+            self.client = OpenAI(api_key=api_key)
+        else:
+            self.client = OpenAI()
 
     def process_single_request(self, request: OpenAIRequest) -> OpenAIResponse:
         """Process a single OpenAI request synchronously."""
@@ -105,7 +111,12 @@ class AsyncOpenaiProcessor:
             api_key: OpenAI API key (optional, will use environment variable if not provided)
             max_concurrent: Maximum number of concurrent requests
         """
-        self.client = AsyncOpenAI(api_key=api_key) if api_key else AsyncOpenAI()
+        if api_key is None:
+            api_key = os.getenv("OPENAI_API_KEY")
+        if api_key:
+            self.client = AsyncOpenAI(api_key=api_key)
+        else:
+            self.client = AsyncOpenAI()
         self.semaphore = asyncio.Semaphore(max_concurrent)
         self.max_concurrent = max_concurrent
 
